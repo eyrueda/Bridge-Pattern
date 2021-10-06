@@ -1,0 +1,28 @@
+package com.company;
+
+import com.company.devices.Device;
+import com.company.devices.Radio;
+import com.company.devices.Tv;
+import com.company.remotes.AdvancedRemote;
+import com.company.remotes.BasicRemote;
+
+public class Main {
+
+    public static void main(String[] args) {
+        testDevice(new Tv());
+        testDevice(new Radio());
+    }
+
+    public static void testDevice(Device device) {
+        System.out.println("Tests with basic remote.");
+        BasicRemote basicRemote = new BasicRemote(device);
+        basicRemote.power();
+        device.printStatus();
+
+        System.out.println("Tests with advanced remote.");
+        AdvancedRemote advancedRemote = new AdvancedRemote(device);
+        advancedRemote.power();
+        advancedRemote.mute();
+        device.printStatus();
+    }
+}
